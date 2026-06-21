@@ -473,11 +473,15 @@
     <h2>Visitors: <span id="visits">Loading...</span></h2>
 
     <script>
-        fetch("https://api.countapi.xyz/hit/test-counter-123456/visits")
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById("visits").textContent = data.value;
-            });
+    fetch("https://melvincloudresume.azurewebsites.net/api/GetCounter")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("visits").textContent = data;
+        })
+        .catch(err => {
+            document.getElementById("visits").textContent = "Error";
+            console.error("Counter error:", err);
+        });
     </script>
     <!-- Faint Faded Overlay of Abstract Cybercore Retro-Futurism Art -->
     <div class="cybercore-overlay">
