@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melvin Francy - Resume</title>
+    <meta name="description"
+        content="Resume of Melvin Francy, an IMCA Postgraduate based in Kochi, India. Skilled in Python, Django, Linux, and web development.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #08080a;
+            --text-color: #d1d5db;
+            --text-title: #ffffff;
+            --text-muted: #71717a;
+            --accent-chrome: linear-gradient(180deg, #ffffff 0%, #a1a1aa 40%, #ffffff 60%, #52525b 100%);
+            --accent-silver: #c8c8cb;
+            --border-thin: 1px solid rgba(255, 255, 255, 0.12);
+            --card-bg: rgba(13, 13, 16, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            /* Classy dot grid background on webpage */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Dotted grid layer inside the resume card */
+        .resume-grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Glowing reflective wave swept from bottom-right to top-left inside card */
+        .resume-glow-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.01) 48%, rgba(255, 255, 255, 0.07) 50%, rgba(255, 255, 255, 0.01) 52%, transparent 60%);
+            background-size: 300% 300%;
+            animation: waveSweep 14s ease-in-out infinite;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes waveSweep {
+            0% {
+                background-position: 150% 150%;
+            }
+
+            50% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: -150% -150%;
+            }
+        }
+
+        /* Abstract Art Overlay (Cybercore / Retro Futurism / Metal Heart inspiration) */
+        .cybercore-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.06;
+            /* Faint & faded */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tech corner marks */
+        .corner-mark {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            color: rgba(255, 255, 255, 0.25);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            pointer-events: none;
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-left: 1px solid currentColor;
+            border-top: 1px solid currentColor;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+            border-right: 1px solid currentColor;
+            border-top: 1px solid currentColor;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-left: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-right: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 40px;
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+        }
+
+        /* Keep content elements on top of the background grid and glow wave */
+        header,
+        section,
+        footer {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            padding-bottom: 30px;
+            margin-bottom: 35px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header-main {
+            width: 100%;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 6vw, 4rem);
+            font-weight: 300;
+            letter-spacing: -1px;
+            line-height: 1.0;
+            color: var(--text-title);
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            list-style: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+        }
+
+        .contact-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        /* SECTION TITLES & SEPARATORS */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        .section-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-title);
+        }
+
+        .section-line {
+            flex-grow: 1;
+            margin-left: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+            position: relative;
+        }
+
+        .section-line::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 5px;
+            height: 5px;
+            background-color: var(--accent-silver);
+            border-radius: 50%;
+        }
+
+        /* SECTIONS & CARDS */
+        .intro-text {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            padding-left: 15px;
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Skills layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-box {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.01);
+            position: relative;
+        }
+
+        .skill-box::before {
+            content: '+';
+            position: absolute;
+            top: -5px;
+            left: -3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .skill-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+
+        /* Experience and project details */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .job-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .job-company {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: 8px;
+        }
+
+        .job-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .timeline-body {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .timeline-body li {
+            position: relative;
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .timeline-body li::before {
+            content: "—";
+            position: absolute;
+            left: -15px;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .tech-tags {
+            margin-top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .tech-tags span {
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1px 5px;
+            margin-left: 4px;
+            border-radius: 2px;
+        }
+
+        /* Education & Certs Row */
+        .double-col {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+        }
+
+        .edu-item {
+            margin-bottom: 16px;
+        }
+
+        .edu-school {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .edu-degree {
+            font-size: 0.85rem;
+            color: #a1a1aa;
+        }
+
+        .edu-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: #d1d5db;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .cert-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 15px;
+                padding: 20px;
+            }
+
+            .double-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <h2>Visitors: <span id="visits">Loading...</span></h2>
+
+    <script>
+        fetch("https://api.countapi.xyz/hit/test-counter-123456/visits")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("visits").textContent = data.value;
+            });
+    </script>
+    <!-- Faint Faded Overlay of Abstract Cybercore Retro-Futurism Art -->
+    <div class="cybercore-overlay">
+        <svg width="80%" height="80%" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Large orbit paths -->
+            <circle cx="400" cy="400" r="300" stroke="url(#metalGlow)" stroke-width="0.75" stroke-dasharray="10 15" />
+            <circle cx="400" cy="400" r="240" stroke="url(#metalGlow)" stroke-width="0.5" />
+            <circle cx="400" cy="400" r="180" stroke="url(#metalGlow)" stroke-width="1" stroke-dasharray="4 4" />
+
+            <!-- Technical vector lines / crosshairs -->
+            <line x1="400" y1="50" x2="400" y2="750" stroke="url(#metalGlow)" stroke-width="0.5"
+                stroke-dasharray="5 5" />
+            <line x1="50" y1="400" x2="750" y2="400" stroke="url(#metalGlow)" stroke-width="0.5"
+                stroke-dasharray="5 5" />
+
+            <!-- Cybercore liquid swooshes and abstract spikes (faint) -->
+            <path d="M150 150 C 300 250, 500 150, 650 150 C 500 350, 300 450, 150 150 Z" stroke="url(#metalGlow)"
+                stroke-width="1.25" fill="none" />
+            <path d="M650 650 C 500 550, 300 650, 150 650 C 300 450, 500 350, 650 650 Z" stroke="url(#metalGlow)"
+                stroke-width="0.75" fill="none" />
+
+            <!-- Diagonal grid helper lines -->
+            <line x1="150" y1="150" x2="650" y2="650" stroke="url(#metalGlow)" stroke-width="0.25" />
+            <line x1="650" y1="150" x2="150" y2="650" stroke="url(#metalGlow)" stroke-width="0.25" />
+
+            <!-- Abstract Metal Heart Wireframe (Faded / Center backdrop) -->
+            <path
+                d="M400 490 C400 490 220 350 220 250 C220 170 300 150 350 195 C375 215 400 250 400 250 C400 250 425 215 450 195 C500 150 580 170 580 250 C580 350 400 490 400 490 Z"
+                stroke="url(#metalGlow)" stroke-width="1.5" fill="none" opacity="0.6" />
+
+            <!-- Retro cybercore coordinate markers & dots -->
+            <circle cx="400" cy="250" r="4" fill="#ffffff" opacity="0.5" />
+            <circle cx="220" cy="250" r="2" fill="#ffffff" opacity="0.4" />
+            <circle cx="580" cy="250" r="2" fill="#ffffff" opacity="0.4" />
+            <circle cx="400" cy="490" r="3" fill="#ffffff" opacity="0.5" />
+
+            <!-- Additional technical rings & dots -->
+            <circle cx="400" cy="400" r="100" stroke="url(#metalGlow)" stroke-width="0.5" />
+            <circle cx="400" cy="400" r="6" fill="#ffffff" opacity="0.3" />
+            <circle cx="300" cy="300" r="1.5" fill="#ffffff" />
+            <circle cx="500" cy="300" r="1.5" fill="#ffffff" />
+            <circle cx="300" cy="500" r="1.5" fill="#ffffff" />
+            <circle cx="500" cy="500" r="1.5" fill="#ffffff" />
+
+            <defs>
+                <linearGradient id="metalGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="50%" stop-color="#71717a" />
+                    <stop offset="100%" stop-color="#18181b" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="resume-container">
+        <!-- Reflective Grid Wave Layer inside the card -->
+        <div class="resume-grid-bg"></div>
+        <div class="resume-glow-wave"></div>
+
+        <!-- Corner details -->
+        <div class="corner-mark top-left"></div>
+        <div class="corner-mark top-right"></div>
+        <div class="corner-mark bottom-left"></div>
+        <div class="corner-mark bottom-right"></div>
+
+        <!-- HEADER -->
+        <header>
+            <div class="header-main">
+                <h1>Melvin Francy</h1>
+                <div class="contact-info">
+                    <span>Kochi, Kerala, India</span>
+                    <span>•</span>
+                    <span>+91 90741 69265</span>
+                    <span>•</span>
+                    <span>melvinf.sync@gmail.com</span>
+                </div>
+                <div class="contact-links">
+                    <a href="https://melvin-francy.vercel.app" target="_blank">Portfolio</a>
+                    <a href="https://www.linkedin.com/in/melvinfrancy/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/Melvinfused" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- PROFILE SUMMARY -->
+        <section id="summary">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">01</span>
+                    <h2 class="section-title">Profile Summary</h2>
+                </div>
+                <div class="section-line"></div>
+            </div>
+            <p class="intro-text">
+                IMCA postgraduate with experience in Python, Django, and Linux through internship and personal projects.
+                Built APIs, database-driven applications, and worked with Linux and server tools. Passionate about
+                development and system roles, seeking an entry-level role to apply skills and continue learning.
+            </p>
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section id="skills">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">02</span>
+                    <h2 class="section-title">Technical Skills</h2>
+                </div>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-title">Languages & Frameworks</div>
+                    <div class="skill-desc">Python, PHP, Bash, Django, REST APIs</div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">Databases & Caching</div>
+                    <div class="skill-desc">MySQL, PostgreSQL, Redis</div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">Tools & Systems</div>
+                    <div class="skill-desc">Docker, Postman, DBeaver, Git, GitHub, Linux, Windows</div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">Networking & Servers</div>
+                    <div class="skill-desc">NGINX, Apache, DNS, SSH, Firewalls</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <span class="job-title">Backend Developer Intern</span>
+                        <span class="job-company">// Catalist ERP</span>
+                    </div>
+                    <div class="job-date">Nov 2025 – Feb 2026 | Kochi, India</div>
+                </div>
+                <ul class="timeline-body">
+                    <li>Developed RBAC (Role-Based Access Control) system using Django REST Framework, enabling role
+                        creation, bulk permission import, and user-role mapping.</li>
+                    <li>Implemented permission checks for Product and Business RFQ/Quote APIs with filtering and
+                        pagination.</li>
+                    <li>Built Employee Attendance & Check-in System with JWT authentication and branch/site-based
+                        location validation using latitude/longitude calculations.</li>
+                    <li>Implemented CSV bulk user import for 2M records using Celery and Redis for asynchronous
+                        processing.</li>
+                    <li>Developed automated multi-step email notification workflows triggered on user login events.</li>
+                    <li>Handled photo uploads and validation for employee check-ins.</li>
+                </ul>
+                <div class="tech-tags">
+                    Technologies: <span>Python</span><span>Django</span><span>Django REST
+                        Framework</span><span>PostgreSQL</span><span>Celery</span><span>Redis</span><span>SimpleJWT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">04</span>
+                    <h2 class="section-title">Projects</h2>
+                </div>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="job-title">Home/Office Moving Service Web App</span>
+                </div>
+                <ul class="timeline-body">
+                    <li>Built a booking system with server-side validation, dynamic pricing, and routing using Geoapify
+                        API.</li>
+                </ul>
+                <div class="tech-tags">
+                    Technologies: <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Geoapify API</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="job-title">Music Artist Portfolio</span>
+                </div>
+                <ul class="timeline-body">
+                    <li>Developed a platform for music content and booking management, focusing on backend logic,
+                        database handling, and API integration.</li>
+                </ul>
+                <div class="tech-tags">
+                    Technologies: <span>PHP</span><span>MySQL</span><span>JavaScript</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="job-title">Apache vHost & SSH Lab</span>
+                </div>
+                <ul class="timeline-body">
+                    <li>Installed and configured Apache on a Linux VM with virtual hosts, managed the server via SSH,
+                        and made multiple sites accessible externally, simulating real-world hosting.</li>
+                </ul>
+                <div class="tech-tags">
+                    Technologies: <span>Linux</span><span>Apache</span><span>SSH</span><span>Virtual Machines</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS -->
+        <section id="education-certs">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">05</span>
+                    <h2 class="section-title">Education & Certifications</h2>
+                </div>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="double-col">
+                <div>
+                    <div class="edu-item">
+                        <div class="edu-school">De Paul Institute of Science and Technology</div>
+                        <div class="edu-degree">Integrated Master of Computer Application (IMCA)</div>
+                        <div class="edu-meta">Angamaly, Kerala, India | 2025</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-school">Technical Higher Secondary School</div>
+                        <div class="edu-degree">Plus 2</div>
+                        <div class="edu-meta">Aluva, Kerala, India | 2020</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-school">St. Mary's High School</div>
+                        <div class="edu-degree">SSLC</div>
+                        <div class="edu-meta">Aluva, Kerala, India | 2017</div>
+                    </div>
+                </div>
+
+                <div>
+                    <ul class="cert-list">
+                        <li><strong>Cisco</strong><br>Python Essentials 1, Operating Systems Basics, Computer Hardware
+                            Basics</li>
+                        <li><strong>The Linux Foundation</strong><br>LFS101: Introduction to Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <span>Status: Available</span>
+            <span>Melvin Francy // Cybercore Edition</span>
+            <span>Rev: 2026.06</span>
+        </footer>
+    </div>
+
+</body>
+
+</html>
